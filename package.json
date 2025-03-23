@@ -1,8 +1,10 @@
 {
     "name": "focus-tasks",
     "displayName": "Focus Tasks",
-    "description": "Boost productivity with a top 3 task list and optional Pomodoro timers.",
+    "description": "Stay focused on what matters most. Focus Tasks helps you manage your top priorities directly inside VS Code with a lightweight, no-clutter sidebar.",
     "version": "0.0.1",
+    "author": "austin_codes",
+    "repository": "https://github.com/Austin-Jones/FocusTasks_VS_Extension",
     "engines": {
         "vscode": "^1.70.0"
     },
@@ -18,8 +20,16 @@
         "commands": [
             {
                 "command": "focusTasks.addTask",
-                "title": "Focus Tasks: Add a New Task"
-            }
+                "title": "Add Task ➕"
+            },
+            {
+                "command": "focusTasks.deleteTask",
+                "title": "Delete Task"
+            },
+            {
+                "command": "focusTasks.toggleView",
+                "title": "Focus Tasks: Toggle Panel"
+              }
         ],
         "viewsContainers": {
             "activitybar": [
@@ -34,10 +44,33 @@
             "focusTasks": [
                 {
                     "id": "focusTasksView",
-                    "name": "Top 3 Tasks"
+                    "name": "Tasks"
                 }
             ]
-        }
+        },
+        "menus": {
+            "view/item/context": [
+                {
+                    "command": "focusTasks.deleteTask",
+                    "when": "view == focusTasksView && viewItem == focusTask",
+                    "group": "inline"
+                }
+            ],
+            "view/title": [
+                {
+                  "command": "focusTasks.addTask",
+                  "when": "view == focusTasksView",
+                  "group": "navigation"
+                }
+              ]
+        },
+        "keybindings": [
+            {
+                "command": "focusTasks.toggleView",
+                "key": "ctrl+alt+shift+t",
+                "when": "true"
+              }
+        ]
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
@@ -48,6 +81,5 @@
         "typescript": "^4.9.5",
         "vsce": "^2.15.0"
     },
-    "dependencies": {
-    }
+    "dependencies": {}
 }
