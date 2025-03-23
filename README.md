@@ -54,8 +54,7 @@ Use `Ctrl+Alt+Shift+T` to toggle the Focus Tasks panel.
 ---
 
 ## 📸 Screenshots
-
-> _(Add screenshots of the sidebar with tasks, the + button, and the shortcut in action)_
+![In Action](https://i.ibb.co/zhdcw7zc/Screenshot-2025-03-23-134910.png "Usage")
 
 ---
 
