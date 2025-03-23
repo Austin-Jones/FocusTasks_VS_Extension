@@ -1,0 +1,53 @@
+{
+    "name": "focus-tasks",
+    "displayName": "Focus Tasks",
+    "description": "Boost productivity with a top 3 task list and optional Pomodoro timers.",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.70.0"
+    },
+    "categories": [
+        "Productivity"
+    ],
+    "activationEvents": [
+        "onCommand:focusTasks.addTask",
+        "onView:focusTasksView"
+    ],
+    "main": "./dist/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "focusTasks.addTask",
+                "title": "Focus Tasks: Add a New Task"
+            }
+        ],
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "focusTasks",
+                    "title": "Focus Tasks",
+                    "icon": "media/icon.png"
+                }
+            ]
+        },
+        "views": {
+            "focusTasks": [
+                {
+                    "id": "focusTasksView",
+                    "name": "Top 3 Tasks"
+                }
+            ]
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.70.0",
+        "typescript": "^4.9.5",
+        "vsce": "^2.15.0"
+    },
+    "dependencies": {
+    }
+}
