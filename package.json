@@ -4,13 +4,16 @@
     "description": "Stay focused on what matters most. Focus Tasks helps you manage your top priorities directly inside VS Code with a lightweight, no-clutter sidebar.",
     "version": "0.0.1",
     "author": "austin_codes",
+    "publisher": "AustinCodes",
     "repository": "https://github.com/Austin-Jones/FocusTasks_VS_Extension",
     "engines": {
         "vscode": "^1.70.0"
     },
     "categories": [
-        "Productivity"
+        "Other"
     ],
+    "enabledApiProposals": ["languageModel"],
+"api": "proposed",
     "activationEvents": [
         "onCommand:focusTasks.addTask",
         "onView:focusTasksView"
@@ -29,14 +32,22 @@
             {
                 "command": "focusTasks.toggleView",
                 "title": "Focus Tasks: Toggle Panel"
-              }
+            },
+            {
+                "command": "focusTasks.sendToCopilot",
+                "title": "Send Task to Copilot"
+            },
+            {
+                "command": "focusTasks.addFromSelection",
+                "title": "Add Selected Text as Task"
+            }
         ],
         "viewsContainers": {
             "activitybar": [
                 {
                     "id": "focusTasks",
                     "title": "Focus Tasks",
-                    "icon": "media/icon.png"
+                    "icon": "media/icon.webp"
                 }
             ]
         },
@@ -54,22 +65,33 @@
                     "command": "focusTasks.deleteTask",
                     "when": "view == focusTasksView && viewItem == focusTask",
                     "group": "inline"
+                },
+                {
+                    "command": "focusTasks.sendToCopilot",
+                    "when": "view == focusTasksView && viewItem == focusTask",
+                    "group": "inline"
                 }
             ],
             "view/title": [
                 {
-                  "command": "focusTasks.addTask",
-                  "when": "view == focusTasksView",
-                  "group": "navigation"
+                    "command": "focusTasks.addTask",
+                    "when": "view == focusTasksView",
+                    "group": "navigation"
                 }
-              ]
+            ],
+            "commandPalette": [
+                {
+                    "command": "focusTasks.addFromSelection",
+                    "when": "editorTextFocus"
+                }
+            ]
         },
         "keybindings": [
             {
                 "command": "focusTasks.toggleView",
                 "key": "ctrl+alt+shift+t",
                 "when": "true"
-              }
+            }
         ]
     },
     "scripts": {
